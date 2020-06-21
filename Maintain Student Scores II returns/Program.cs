@@ -16,7 +16,7 @@ namespace Maintain_Student_Scores_II_returns
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new frmStudentScores());
         }
     }
 }
