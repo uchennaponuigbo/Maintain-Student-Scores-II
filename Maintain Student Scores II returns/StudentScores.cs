@@ -16,11 +16,15 @@ namespace Maintain_Student_Scores_II_returns
         {
             InitializeComponent();
 
+            LoadFromDatabase();           
+        }
+
+        private void LoadFromDatabase()
+        {
             //default data until I add the database stuff to read from
             StudentsListBox.Items.Add("Joel Murach|97|71|83");
             StudentsListBox.Items.Add("Doug Lowel|99|93|97");
             StudentsListBox.Items.Add("Anne Boehm|100|100|100");
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -28,11 +32,12 @@ namespace Maintain_Student_Scores_II_returns
             Close();
         }
 
+        /*TODO: Find out why the form closes regardless of whether the textbox contains values or not*/
         private void btnAddNew_Click(object sender, EventArgs e)
         {
             Form form = new frmAddNewStudent();
             DialogResult button = form.ShowDialog();
-            if (button == DialogResult.OK)
+            if (button == DialogResult.OK && form.Tag != null)
                 StudentsListBox.Items.Add(form.Tag.ToString());
         }
 
@@ -43,7 +48,7 @@ namespace Maintain_Student_Scores_II_returns
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Student.RemoveItem(StudentsListBox);
+            ListManagement.RemoveItem(StudentsListBox);
             ClearTextboxes();
         }
 
@@ -56,14 +61,7 @@ namespace Maintain_Student_Scores_II_returns
                 DialogResult button = form.ShowDialog();
                 if (button == DialogResult.OK)
                 {
-                    if (StudentsListBox.SelectedItems.Count != 0)
-                    {
-                        while (StudentsListBox.SelectedIndex != -1)
-                        {
-                            StudentsListBox.Items.Insert(StudentsListBox.SelectedIndex, form.Tag);
-                            StudentsListBox.Items.Remove(StudentsListBox.SelectedItem);
-                        }
-                    }
+                    ListManagement.ChangeItem(StudentsListBox, form);
                 }
                 ClearTextboxes();
             }  

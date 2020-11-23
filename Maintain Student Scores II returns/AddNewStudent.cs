@@ -15,21 +15,22 @@ namespace Maintain_Student_Scores_II_returns
             Close();
         }
 
+        /*TODO: Find out why the form closes regardless of whether the textbox contains values or not*/
         private void btnOk_Click(object sender, EventArgs e)
         {
-            if(Validator.IsNotEmpty(txtName))
+            if (Validator.IsNotEmpty(txtName))
             {
                 string newStudent = txtName.Text + "|";
                 if (txtScores.Text != "")
                 {
                     string scoresDelimiter = txtScores.Text.Replace(' ', '|');
-                    scoresDelimiter = scoresDelimiter.Remove(scoresDelimiter.Length - 1, 1);
+                    scoresDelimiter = scoresDelimiter.Remove(scoresDelimiter.Length - 1, 1); //removes last character in string
                     newStudent += scoresDelimiter;
                 }
 
                 Tag = newStudent;
                 Close();
-            }   
+            }          
         }
 
         private void btnClear_Click(object sender, EventArgs e)

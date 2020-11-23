@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Maintain_Student_Scores_II_returns
 {
@@ -71,21 +69,10 @@ namespace Maintain_Student_Scores_II_returns
             foreach (var item in StudentScores)
                 average += item;
 
-            if (StudentScores.Count() == 0)
-                return 0;
+            if (average == 0)
+                return average;
             else
                 return average / StudentScores.Count();
-        }
-
-        public static void RemoveItem(in ListBox listBox)
-        {
-            if (listBox.SelectedItems.Count != 0)
-            {
-                while (listBox.SelectedIndex != -1)
-                {
-                    listBox.Items.RemoveAt(listBox.SelectedIndex);
-                }
-            }
-        }
+        }       
     }
 }

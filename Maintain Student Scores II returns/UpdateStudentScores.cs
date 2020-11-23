@@ -65,14 +65,7 @@ namespace Maintain_Student_Scores_II_returns
                 DialogResult button = form.ShowDialog();
                 if (button == DialogResult.OK)
                 {
-                    if (ScoresListBox.SelectedItems.Count != 0)
-                    {
-                        while (ScoresListBox.SelectedIndex != -1)
-                        {
-                            ScoresListBox.Items.Insert(ScoresListBox.SelectedIndex, form.Tag);
-                            ScoresListBox.Items.Remove(ScoresListBox.SelectedItem);
-                        }
-                    }
+                    Student.ChangeItem(ScoresListBox, form);
                 }
             }
             

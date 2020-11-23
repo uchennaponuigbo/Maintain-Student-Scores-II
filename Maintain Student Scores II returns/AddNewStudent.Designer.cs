@@ -73,6 +73,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(179, 20);
             this.txtName.TabIndex = 3;
+            this.txtName.Tag = "\'Name\'";
             // 
             // txtScore
             // 
@@ -84,6 +85,7 @@
             // 
             // txtScores
             // 
+            this.txtScores.Cursor = System.Windows.Forms.Cursors.No;
             this.txtScores.Location = new System.Drawing.Point(57, 75);
             this.txtScores.MaxLength = 500;
             this.txtScores.Name = "txtScores";
