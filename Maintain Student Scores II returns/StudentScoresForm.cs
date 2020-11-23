@@ -21,10 +21,13 @@ namespace Maintain_Student_Scores_II_returns
 
         private void LoadFromDatabase()
         {
-            //default data until I add the database stuff to read from
-            StudentsListBox.Items.Add("Joel Murach|97|71|83");
-            StudentsListBox.Items.Add("Doug Lowel|99|93|97");
-            StudentsListBox.Items.Add("Anne Boehm|100|100|100");
+            List<Student> incoming = StudentDB.LoadStudents();
+            foreach (var student in incoming)
+            {
+                student.ConvertBytesToScores();
+                StudentsListBox.Items.Add(student.ToString());
+            }
+                
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -38,7 +41,11 @@ namespace Maintain_Student_Scores_II_returns
             Form form = new frmAddNewStudent();
             DialogResult button = form.ShowDialog();
             if (button == DialogResult.OK && form.Tag != null)
+            {
+                StudentDB.AddStudent(form.Tag.ToString());
                 StudentsListBox.Items.Add(form.Tag.ToString());
+            }
+                
         }
 
         private void ClearTextboxes()
@@ -48,8 +55,9 @@ namespace Maintain_Student_Scores_II_returns
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            ListManagement.RemoveItem(StudentsListBox);
+            string itemToDelete = ListManagement.RemoveItem(StudentsListBox);
             ClearTextboxes();
+            StudentDB.DeleteStudent(itemToDelete);           
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -61,7 +69,8 @@ namespace Maintain_Student_Scores_II_returns
                 DialogResult button = form.ShowDialog();
                 if (button == DialogResult.OK)
                 {
-                    ListManagement.ChangeItem(StudentsListBox, form);
+                    string itemToModify = ListManagement.ChangeItem(StudentsListBox, form);                   
+                    StudentDB.UpdateStudent(itemToModify);
                 }
                 ClearTextboxes();
             }  

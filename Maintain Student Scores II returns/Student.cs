@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Maintain_Student_Scores_II_returns
 {
@@ -9,6 +9,8 @@ namespace Maintain_Student_Scores_II_returns
     public class Student
     {
         public string Name { get;  private set; }
+        private byte[] Scores { get; set; }
+
         private List<int> StudentScores;
 
         public Student(string studentData)
@@ -35,8 +37,37 @@ namespace Maintain_Student_Scores_II_returns
             StudentScores = scores;
         }
 
-        public override string ToString()
+        Student()
         {
+            //private constructor is required for database initializing
+            StudentScores = new List<int>();
+        }
+
+        public void ConvertBytesToScores() //this method should only be called once in proportion and that's when the first form opens
+        {
+            if(Scores != null || Scores.Length > 0)
+            {
+                string dataScores = Encoding.Default.GetString(Scores); //my database seperates the scores by single spaces
+                string[] scores = dataScores.Split(' ');
+                if (scores.Length == 1)
+                {
+                    //purposely empty so that in the case of null score data in database,
+                    //I'd check if the split method returned a single element array which is just a single space
+                }
+                else if (scores.Length > 0)
+                {
+                    for (int i = 0; i < scores.Length; i++)
+                        StudentScores.Add(Convert.ToInt32(scores[i]));
+                }
+                
+                
+                Array.Clear(Scores, 0, Scores.Length); //assign to null so that if this method is somehow called again,
+                                                     //it won't corrupt the old data
+            }
+        }
+
+        public override string ToString()
+        {            
             if (StudentScores.Count > 0)
             {
                 string student = Name;

@@ -41,7 +41,7 @@ namespace Maintain_Student_Scores_II_returns
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            Student.RemoveItem(ScoresListBox);
+            ListManagement.RemoveItem(ScoresListBox);
         }
 
         private void btnClearScores_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace Maintain_Student_Scores_II_returns
                 DialogResult button = form.ShowDialog();
                 if (button == DialogResult.OK)
                 {
-                    Student.ChangeItem(ScoresListBox, form);
+                    ListManagement.ChangeItem(ScoresListBox, form);
                 }
             }
             

@@ -1,57 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Sqlite;
+using System.Data.SQLite;
 using Dapper;
+using System.Data;
 
 namespace Maintain_Student_Scores_II_returns
 {
-    //gonna work with SQLserver database on this one
-
-    public class StudentDB
+    public static class StudentDB
     {
-        //private SqlConnection connection;
-        //private Dictionary<string, List<int>> records;
-        public StudentDB()
-        {
-            //string sqlConnectionPath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:
-            //    \Users\Uchenna\Documents\Student_Scores_DB.mdf
-            //    ;Integrated Security=True;Connect Timeout=30";
-
-            //connection = new SqlConnection(sqlConnectionPath);
-            //records = new Dictionary<string, List<int>>();
-        }
-
         public static string LoadConnectionString(string id = "Default") => 
-            ConfigurationManager.ConnectionStrings[id].ConnectionString;
+            ConfigurationManager.ConnectionStrings[id].ConnectionString; //aka absolute path of my database
 
-        public static void LoadStudents()
+        public static List<Student> LoadStudents()
         {
-
+            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                string sql = "SELECT * FROM Students";
+                var output = connection.Query<Student>(sql, new DynamicParameters());
+                return output.AsList();
+            }
         }
 
-        public static void SaveStudents()
+        public static void AddStudent(string newStudent)
         {
-
+            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                int firstDelimter = newStudent.IndexOf("|");
+                string name = newStudent.Substring(0, firstDelimter);
+                string combinedScores = newStudent.Substring(firstDelimter).Replace('|', ' ');
+                combinedScores = combinedScores.Substring(1);
+                string sql = $"INSERT INTO Students (Name, Scores) VALUES (\"{name}\", \"{combinedScores}\")";
+                connection.Execute(sql, new DynamicParameters());
+            }
         }
 
-        public List<string> GetStudents()
+        public static void DeleteStudent(string studentToDelete)
         {
-            //List<string> students = new List<string>();
-            //connection.Open();
-
-            //connection.Close();
-            return null;
+            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                int firstDelimter = studentToDelete.IndexOf("|");
+                string name = studentToDelete.Substring(0, firstDelimter);
+                string sql = $"DELETE FROM Students WHERE Name = \"{name}\"";
+                connection.Execute(sql, new DynamicParameters());
+            }
         }
 
-        public void SaveStudents(in List<string> students)
+        public static void UpdateStudent(string studentToUpdate)
         {
-            //connection.Open();
-
-            //connection.Close();
+            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                int firstDelimter = studentToUpdate.IndexOf("|");
+                string name = studentToUpdate.Substring(0, firstDelimter);
+                string combinedScores = studentToUpdate.Substring(firstDelimter).Replace('|', ' ');
+                combinedScores = combinedScores.Substring(1);                
+                string sql = $"UPDATE Students SET Scores = \"{combinedScores}\" WHERE Name = \"{name}\"";
+                connection.Execute(sql, new DynamicParameters());
+            }
         }
     }
 }

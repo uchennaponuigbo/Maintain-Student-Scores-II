@@ -128,6 +128,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -175,11 +178,11 @@
     <Compile Include="ListManagement.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentDB.cs" />
-    <Compile Include="StudentScores.cs">
+    <Compile Include="StudentScoresForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentScores.Designer.cs">
-      <DependentUpon>StudentScores.cs</DependentUpon>
+    <Compile Include="StudentScoresForm.Designer.cs">
+      <DependentUpon>StudentScoresForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,17 +191,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Student_Scores_DBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="UpdateScore.cs">
+    <Compile Include="UpdateScoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateScore.Designer.cs">
-      <DependentUpon>UpdateScore.cs</DependentUpon>
+    <Compile Include="UpdateScoreForm.Designer.cs">
+      <DependentUpon>UpdateScoreForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateStudentScores.cs">
+    <Compile Include="UpdateStudentScoresForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateStudentScores.Designer.cs">
-      <DependentUpon>UpdateStudentScores.cs</DependentUpon>
+    <Compile Include="UpdateStudentScoresForm.Designer.cs">
+      <DependentUpon>UpdateStudentScoresForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="AddNewStudent.resx">
@@ -216,14 +219,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StudentScores.resx">
-      <DependentUpon>StudentScores.cs</DependentUpon>
+    <EmbeddedResource Include="StudentScoresForm.resx">
+      <DependentUpon>StudentScoresForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateScore.resx">
-      <DependentUpon>UpdateScore.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateScoreForm.resx">
+      <DependentUpon>UpdateScoreForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateStudentScores.resx">
-      <DependentUpon>UpdateStudentScores.cs</DependentUpon>
+    <EmbeddedResource Include="UpdateStudentScoresForm.resx">
+      <DependentUpon>UpdateStudentScoresForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -260,5 +263,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCLRaw.lib.e_sqlite3.2.0.2\build\net461\SQLitePCLRaw.lib.e_sqlite3.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
 </Project>
