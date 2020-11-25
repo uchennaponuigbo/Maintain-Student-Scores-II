@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maintain_Student_Scores_II_returns
@@ -21,6 +15,8 @@ namespace Maintain_Student_Scores_II_returns
 
         private void LoadFromDatabase()
         {
+            //if the database doesn't exist, then create it... 
+            //but I'll leave that to the student copying this project
             List<Student> incoming = StudentDB.LoadStudents();
             foreach (var student in incoming)
             {

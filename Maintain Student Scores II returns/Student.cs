@@ -43,7 +43,8 @@ namespace Maintain_Student_Scores_II_returns
             StudentScores = new List<int>();
         }
 
-        public void ConvertBytesToScores() //this method should only be called once in proportion and that's when the first form opens
+        public void ConvertBytesToScores() //this method should only be called once in proportion to the student's name appearing 
+            //on the form when the first form opens
         {
             if(Scores != null || Scores.Length > 0)
             {

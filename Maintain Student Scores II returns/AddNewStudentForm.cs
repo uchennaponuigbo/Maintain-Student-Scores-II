@@ -30,7 +30,11 @@ namespace Maintain_Student_Scores_II_returns
 
                 Tag = newStudent;
                 Close();
-            }          
+            }
+            else
+            {
+
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)

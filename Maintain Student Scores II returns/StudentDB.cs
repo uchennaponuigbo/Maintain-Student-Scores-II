@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SQLite;
-using Dapper;
+using System.Configuration; //go to configuration manager and find this, then check it
+using System.Data.SQLite; //install nuget package
+using Dapper; //install nuget package
 using System.Data;
 
 namespace Maintain_Student_Scores_II_returns

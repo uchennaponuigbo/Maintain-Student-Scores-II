@@ -163,17 +163,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNewStudent.cs">
+    <Compile Include="AddNewStudentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewStudent.Designer.cs">
-      <DependentUpon>AddNewStudent.cs</DependentUpon>
+    <Compile Include="AddNewStudentForm.Designer.cs">
+      <DependentUpon>AddNewStudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddScore.cs">
+    <Compile Include="AddScoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddScore.Designer.cs">
-      <DependentUpon>AddScore.cs</DependentUpon>
+    <Compile Include="AddScoreForm.Designer.cs">
+      <DependentUpon>AddScoreForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ListManagement.cs" />
     <Compile Include="Student.cs" />
@@ -186,11 +186,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student_Scores_DBDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Student_Scores_DBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="UpdateScoreForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,11 +199,11 @@
       <DependentUpon>UpdateStudentScoresForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
-    <EmbeddedResource Include="AddNewStudent.resx">
-      <DependentUpon>AddNewStudent.cs</DependentUpon>
+    <EmbeddedResource Include="AddNewStudentForm.resx">
+      <DependentUpon>AddNewStudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddScore.resx">
-      <DependentUpon>AddScore.cs</DependentUpon>
+    <EmbeddedResource Include="AddScoreForm.resx">
+      <DependentUpon>AddScoreForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -239,17 +234,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="StudentDB.db" />
-    <None Include="Student_Scores_DBDataSet.xsc">
-      <DependentUpon>Student_Scores_DBDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="Student_Scores_DBDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Student_Scores_DBDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Student_Scores_DBDataSet.xss">
-      <DependentUpon>Student_Scores_DBDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
